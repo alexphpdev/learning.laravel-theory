@@ -12,5 +12,35 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+     return view('welcome');
+});
+
+Route::get('/page', function () {
+    return view('page');
+});
+
+Route::get('/env', function () {
+    echo '<pre>';
+    print_r($_ENV);
+    echo config('app.locale') . "<br>";
+    Config::set('app.locale', 'ru');
+    echo Config::get('app.locale') . "<br>";
+    echo env('APP_ENV');
+    echo '</pre>';
+});
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+/*Route::post('/comments', function () {
+    print_r($_POST);
+});*/
+
+/*Route::match(['get', 'post'], '/comments', function () {
+    print_r($_POST);
+});*/
+
+Route::any('/comments', function () {
+    print_r($_POST);
 });

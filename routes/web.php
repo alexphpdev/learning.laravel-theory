@@ -105,6 +105,23 @@ Route::group(['prefix' => 'admin/{id}'], function () {
 });
 
 
+Route::get('/about', 'FirstController@show');
+Route::get('/dir/about', 'Dir\FirstController@show');
+Route::get('/about/{id}', 'FirstController@getId');
+
+
+Route::get('/articles', ['uses'=>'Admin\CoreController@getArticles', 'as' => 'articles']);
+Route::get('/article/{id}', 'Admin\CoreController@getArticle')->name('article');
+
+Route::get('/quiz/info', 'Admin\CoreResource@info');
+Route::resource('/quiz', 'Admin\CoreResource', ['only' => ['index', 'show']]);
+
+
+
+
+
+
+
 
 
 

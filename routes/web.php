@@ -116,11 +116,43 @@ Route::get('/article/{id}', 'Admin\CoreController@getArticle')->name('article');
 Route::get('/quiz/info', 'Admin\CoreResource@info');
 Route::resource('/quiz', 'Admin\CoreResource', ['only' => ['index', 'show']]);
 
+//Route::get('/posts/{pages}',
+//    [
+//        'middleware' => ['myMiddlewareGroup'],
+//        'uses' => 'Admin\CoreController@getPagesList',
+//        'as' => 'pagesList'
+//    ]
+//);
 
+//Route::get('/posts/{pages}',
+//    [
+//        'uses' => 'Admin\CoreController@getPagesList',
+//        'as' => 'pagesList'
+//    ]
+//)->middleware('myMiddleware');
 
+//Route::get('/posts/{pages}',
+//    [
+//        'uses' => 'Admin\CoreController@getPagesList',
+//        'as' => 'pagesList',
+//    ]
+//);
 
+Route::get('/posts/{pages}',
+    [
+        'middleware' => 'myMiddleware:someStaticArgument',
+        'uses' => 'Admin\CoreController@getPagesList',
+        'as' => 'pagesList',
+    ]
+);
 
+Route::get('/showMessage/{msg}', 'MessageController@getMessage')->name('showMessage');
 
+Route::group(['middleware' => ['auth', 'myMiddleware', 'moreThan50']], function (){
+//
+//
+//
+});
 
 
 

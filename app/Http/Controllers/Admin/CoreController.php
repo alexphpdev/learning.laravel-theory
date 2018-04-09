@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 class CoreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('myMiddleware');
+    }
+
     public function getArticles()
     {
         return 'getArticles';
@@ -16,5 +21,12 @@ class CoreController extends Controller
     {
         return 'getCertainArticle';
     }
+
+    public function getPagesList($pages)
+    {
+        return 'Вы запросили ' . $pages;
+    }
+
+
 }
 

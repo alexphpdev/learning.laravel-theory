@@ -41,6 +41,11 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'myMiddlewareGroup' => [
+            'myMiddleware',
+            'moreThan50',
+        ],
     ];
 
     /**
@@ -59,5 +64,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'myMiddleware' => \App\Http\Middleware\Mymiddleware::class,
+        'moreThan50' => \App\Http\Middleware\MoreThanFiftyMiddleware::class,
     ];
 }

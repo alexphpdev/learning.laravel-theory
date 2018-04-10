@@ -154,6 +154,22 @@ Route::group(['middleware' => ['auth', 'myMiddleware', 'moreThan50']], function 
 //
 });
 
+Route::group(['prefix' => 'views'], function () {
+
+    Route::get('/', 'ViewBranch\IndexController@show');
+
+    Route::get('/about', 'ViewBranch\IndexController@about')->name('about');
+
+    Route::get('/articles', 'ViewBranch\IndexController@show')->name('articles');
+
+    Route::get('/article/{id}', 'ViewBranch\IndexController@show')->name('article');
+
+
+
+
+
+});
+
 
 
 

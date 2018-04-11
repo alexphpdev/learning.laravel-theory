@@ -1,0 +1,1 @@
+<li>list hahahaha {{$value}}</li>

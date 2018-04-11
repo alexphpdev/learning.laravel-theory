@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\ViewBranch;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
@@ -69,8 +71,39 @@ class IndexController extends Controller
 
     public function about()
     {
-        abort_unless(view()->exists('default.about'), 404);
+//        abort_unless(view()->exists('default.about'), 404);
+//
+//        return view('default.about')->with('title', 'wild animals');
+        $view = view('default.about')->with('title', 'wild animals');
+//        return (new Response($view, 200, ['  ']));
 
-        return view('default.about')->with('title', 'wild animals');
+//        return (new Response($view))->header('Content-Type', 'myType');
+
+//        return response($view)->header('Content-Type', 'myType');
+
+//        return response()->json(['name' => 'ajdklsf', 'nextParam' => 'secondValue']);
+
+        /*return response()
+            ->view('default.about', ['title' => 'titleValue'])
+            ->header('Content-Type', 'myType');*/
+
+//        return response()->download('robots.txt', 'myText.txt');
+
+//        return redirect('http://google.com');
+
+//        return new RedirectResponse('http://google.com');
+
+//        return RedirectResponse::create('http://google.com');
+
+//        return redirect('http://google.com')->withInput();
+
+//        return redirect()->route('home');
+
+//        return redirect()->action('ViewBranch\IndexController@show', ['id' => 134]);
+
+//        return redirect('/articles')->with('param1', 'value1');
+
+        return response()->myRes('sfsfsf');
+
     }
 }

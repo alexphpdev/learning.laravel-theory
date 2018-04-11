@@ -1,5 +1,50 @@
 <div class="col-md-9">
 
+    {{ isset($bvar) ? $bvar : $title }}
+
+    {{ $bvar or $title }}
+
+
+    @if(count($data) < 3)
+
+        В массиве меньше 3 элементов
+
+    @elseif(count($data) == 3)
+
+        В массиве 3 элемента
+
+    @else
+
+
+        В массиве больше 3ёх элементов
+
+
+    @endif
+
+
+    @for($i = 0; $i < count($dataI); $i++)
+
+        <li>{{ $dataI[$i] }}</li>
+
+    @endfor
+
+    @foreach($dataI as $el)
+        <li>{{ $el }}</li>
+    @endforeach
+
+
+    @forelse($dataI as $el)
+        <li>{{ $el }}</li>
+    @empty
+        <p>Ничего нет</p>
+    @endforelse
+
+
+    @each('default.list', $dataI, 'value');
+
+    @myDirective('Hello')
+
+
     <div class="col-md-6">
         <h2>Heading</h2>
         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>

@@ -47,7 +47,7 @@ class IndexController extends Controller
 
     public function showBlade()
     {
-        /*$array = array(
+        $array = array(
 
             'title'=>'Laravel Project',
             'data' =>[
@@ -62,9 +62,9 @@ class IndexController extends Controller
             'bvar' => true,
             'script' =>"<script>alert('hello')</script>"
 
-        );*/
+        );
 
-        return view('default.index', ['title' => 'Article Title']);
+        return view('default.index', $array);
     }
 
     public function about()

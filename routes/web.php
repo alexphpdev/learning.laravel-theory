@@ -172,6 +172,20 @@ Route::group(['prefix' => 'blade'], function () {
 
 });
 
+Route::group(['prefix' => 'request'], function () {
+   Route::match(
+       [
+           'get',
+           'post'
+       ],
+       '/contact/{name?}',
+       [
+           'uses' => 'RequestBranch\RequestController@contact',
+           'as' => 'contact'
+       ]
+   );
+});
+
 
 
 

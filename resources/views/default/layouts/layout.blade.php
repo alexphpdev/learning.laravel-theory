@@ -25,6 +25,7 @@
             <li><a href="{{ route('about') }}">About</a></li>
             <li><a href="{{ route('articles') }}">Articles</a></li>
             <li><a href="{{ route('article',array('id'=>10)) }}">Article</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>

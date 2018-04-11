@@ -164,11 +164,14 @@ Route::group(['prefix' => 'views'], function () {
 
     Route::get('/article/{id}', 'ViewBranch\IndexController@show')->name('article');
 
+});
 
+Route::group(['prefix' => 'blade'], function () {
 
-
+    Route::get('/', 'ViewBranch\IndexController@showBlade');
 
 });
+
 
 
 

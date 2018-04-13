@@ -130,4 +130,109 @@ class IndexController extends Controller
         $result = DB::select("SELECT * FROM articles");
         dd($result);
     }
+
+    protected static $articles = [];
+
+    protected static function addArticles($article)
+    {
+        self::$articles[] = $article;
+    }
+
+    public function queryBuilder()
+    {
+//        $articles = DB::table('articles')->get();
+//        $articles = DB::table('articles')->first();
+//        $articles = DB::table('articles')->value('name');
+//        dd($articles);
+/*
+        DB::table('articles')->orderBy('id')->chunk(2, function ($processedData) {
+            foreach ($processedData as $el) {
+                self::addArticles($el);
+            }
+        });
+
+        dd(self::$articles);
+ */
+
+//        $result = DB::table('articles')->pluck('name');
+//        $result = DB::table('articles')->count();
+//        $result = DB::table('articles')->max('id');
+//        $result = DB::table('articles')->min('id');
+//        $result = DB::table('articles')->avg('id');
+//        $result = DB::table('articles')->select('name', 'img')->get();
+//        $result = DB::table('articles')->distinct()->select('name', 'img')->get();
+        /*$query = DB::table('articles')->select('name');
+        if (3 == 1+2) {
+            $query->addSelect('img as картинка');
+        }
+        $result = $query->get();*/
+
+//        $result = DB::table('articles')->select('name', 'img')->where('id', 3)->first();
+
+        /*$result = DB::table('articles')
+            ->select('text as fulltext')
+            ->where('id', '<', '999')
+//            ->where('name', 'like', 'test%', 'or')
+            ->OrWhere('name', 'like', 'test%')
+            ->get()
+        ;*/
+
+        /*$result = DB::table('articles')
+            ->select('text as fulltext')
+            ->where([
+                ['id', '<', '999'],
+                ['name', 'like', 'test%', 'or']
+            ])
+            ->get()
+        ;*/
+
+//        $result = DB::table('articles')->whereBetween('id', [1,3])->get();
+//        $result = DB::table('articles')->whereNotBetween('id', [1,3])->get();
+
+//        $result = DB::table('articles')->whereIn('id', [1,2,3])->get();
+
+//        $result = DB::table('articles')->groupBy('name')->get();
+
+//        $result = DB::table('articles')->take(2)->get();
+//        $result = DB::table('articles')->take(2)->skip('3')->get();
+
+        /*DB::table('articles')->insert([
+            [
+                'name' => 'nnnname1',
+                'img' => 'pathtoimg1',
+                'text' => 'new text 1',
+            ],
+            [
+                'name' => 'nnnname2',
+                'img' => 'pathtoimg2',
+                'text' => 'new text 2',
+            ]
+        ]);*/
+
+        /*$lastId = DB::table('articles')->insertGetId([
+            'name' => 'nnnname1',
+            'img' => 'pathtoimg1',
+            'text' => 'new text 1',
+        ]);*/
+
+        /*DB::table('articles')
+            ->where('id', 11)
+            ->update([
+                'name' => 'updated name'
+            ])
+        ;*/
+
+//        DB::table('articles')->where('id', 11)->delete();
+
+//        $result = DB::table('articles')->whereNull('img')->get();
+//        $result = DB::table('articles')->whereNotNull('img')->get();
+
+//        DB::table('articles')->increment('numColumn', 5);
+//        DB::table('articles')->decrement('numColumn', 5);
+
+        $result = DB::table('articles')->get();
+
+        dd($result);
+
+    }
 }

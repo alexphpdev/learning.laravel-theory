@@ -187,9 +187,13 @@ Route::group(['prefix' => 'request'], function () {
 });
 
 
+Route::group(['prefix' => 'sql_queries'], function () {
+    Route::get('/', 'ViewBranch\IndexController@sqlQueries');
+});
 
-
-
+Route::group(['prefix' => 'queryBuilder'], function () {
+    Route::get('/', 'ViewBranch\IndexController@queryBuilder');
+});
 
 
 

@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use DB;
 
 class IndexController extends Controller
 {
@@ -105,5 +106,28 @@ class IndexController extends Controller
 
         return response()->myRes('sfsfsf');
 
+    }
+
+
+    public function sqlQueries()
+    {
+//        DB::insert("INSERT INTO articles (name, text) VALUES (?, ?)", ['test 1', 'text']);
+
+//        DB::update("UPDATE articles SET name = ? WHERE id = ?", ['new name', 6]);
+
+//        DB::delete("DELETE FROM articles WHERE id = ?", [6]);
+
+        /*DB::insert("INSERT INTO articles (name, text) VALUES (?, ?)", ['test 1', 'text']);
+
+        $lastInsertId = DB::connection()->getPdo()->lastInsertId();
+
+        echo $lastInsertId . '<br><br>';*/
+
+//        DB::statement('DROP table articles');
+
+
+
+        $result = DB::select("SELECT * FROM articles");
+        dd($result);
     }
 }

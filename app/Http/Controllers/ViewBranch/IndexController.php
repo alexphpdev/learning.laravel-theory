@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Article;
 
 class IndexController extends Controller
 {
@@ -233,6 +234,45 @@ class IndexController extends Controller
         $result = DB::table('articles')->get();
 
         dd($result);
+    }
 
+    public function models()
+    {
+        /*$res = Article::all();
+
+        $r = [];
+        foreach ($res as $el) {
+            $r[] = $el->text;
+        }*/
+
+//        $res = Article::where('id', '>', 3)->get();
+//        $res = Article::where('id', '>', 3)->orderBy('name')->take(2)->get();
+//        $res = Article::chunk(2, function($articles) {})
+//        $res = Article::find(2); // search by id
+//        $res = Article::find([2,3,4,5]); // search by id
+//        $res = Article::findOrFail(123);
+//        $res = Article::where('id', 123)->firstOrFail();
+
+
+        /*$article = new Article;
+        $article->text = 'text from model';
+        $article->img = 'img from model';
+        $article->name = 'name from model';
+        $article->save();*/
+
+        /*Article::create([
+            'name' => 'new name from model',
+            'text' => 'new text from model'
+        ]);*/
+
+        /*$article = Article::find(12);
+        $article->name = 'updated name';
+        $article->save();*/
+
+//        Article::find(12)->update(['name' => 'updated two times']);
+
+        $res = Article::all();
+
+        dd($res);
     }
 }

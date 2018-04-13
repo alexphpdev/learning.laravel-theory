@@ -195,6 +195,8 @@ Route::group(['prefix' => 'queryBuilder'], function () {
     Route::get('/', 'ViewBranch\IndexController@queryBuilder');
 });
 
-
+Route::group(['prefix' => 'models'], function () {
+    Route::get('/', 'ViewBranch\IndexController@models');
+});
 
 

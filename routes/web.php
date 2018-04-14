@@ -199,4 +199,8 @@ Route::group(['prefix' => 'models'], function () {
     Route::get('/', 'ViewBranch\IndexController@models');
 });
 
+Route::group(['prefix' => 'relationships'], function () {
+    Route::get('/', 'ViewBranch\IndexController@relationships');
+});
+
 

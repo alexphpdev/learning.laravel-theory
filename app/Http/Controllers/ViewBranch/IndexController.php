@@ -8,6 +8,9 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Article;
+use App\User;
+use App\Country;
+use App\Role;
 
 class IndexController extends Controller
 {
@@ -315,5 +318,35 @@ class IndexController extends Controller
         $res = Article::all();
 
         dd($res);
+    }
+
+    public function relationships()
+    {
+//        1 to 1
+        /*$user = User::first();
+
+        dd($user->country->toArray());*/
+
+        /*$country = Country::first();
+
+        dd($country->user->toArray());*/
+
+//        1 to many
+        /*$user = User::first();
+
+        dd($user->articles->toArray());*/
+
+        /*$article = Article::inRandomOrder()->first();
+
+        dd($article->user->toArray());*/
+
+//        many to many
+        /*$user = User::first();
+        dd($user->roles->toArray());*/
+
+        $role = Role::first();
+        dd($role->users->toArray());
+
+
     }
 }

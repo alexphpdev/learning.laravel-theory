@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Article;
 
 class IndexController extends Controller
 {
@@ -233,6 +234,86 @@ class IndexController extends Controller
         $result = DB::table('articles')->get();
 
         dd($result);
+    }
 
+    public function models()
+    {
+        /*$res = Article::all();
+
+        $r = [];
+        foreach ($res as $el) {
+            $r[] = $el->text;
+        }*/
+
+//        $res = Article::where('id', '>', 3)->get();
+//        $res = Article::where('id', '>', 3)->orderBy('name')->take(2)->get();
+//        $res = Article::chunk(2, function($articles) {})
+//        $res = Article::find(2); // search by id
+//        $res = Article::find([2,3,4,5]); // search by id
+//        $res = Article::findOrFail(123);
+//        $res = Article::where('id', 123)->firstOrFail();
+
+
+        /*$article = new Article;
+        $article->text = 'text from model';
+        $article->img = 'img from model';
+        $article->name = 'name from model';
+        $article->save();*/
+
+        /*Article::create([
+            'name' => 'new name from model',
+            'text' => 'new text from model'
+        ]);*/
+
+        /*$article = Article::find(12);
+        $article->name = 'updated name';
+        $article->save();*/
+
+//        Article::find(12)->update(['name' => 'updated two times']);
+
+        // найдёт и вернёт или создаст
+        /*$findedArticle = Article::firstOrCreate([
+            'name' => 'first or create name',
+            'text' => 'first or create text',
+        ]);*/
+
+//        найдёт и вернёт или создаст объект но не вставит в БД
+        /*$articleWithoutInsert = Article::firstOrNew([
+            'name' => 'first or new name',
+            'text' => 'first or new text',
+        ]);
+
+        $articleWithoutInsert->save();*/
+
+
+//        Article::find(8)->delete();
+//        Article::destroy(9);
+//        Article::destroy([1,2,3,4]);
+//        Article::where('id', '>', '100')->delete();
+
+//        soft delete
+        /*$article = Article::find(13);
+        $article->delete();*/
+
+        /*$res = Article::withTrashed()->get();
+        foreach ($res as $article) {
+            if ($article->trashed()) {
+                echo $article->id . ' Удалена<br>';
+                $article->restore();
+                echo $article->id . ' Восстановлена<br>';
+            }
+        }*/
+
+//        Article::onlyTrashed()->restore();
+
+        /*$article = Article::where('id', 13)->first();
+        $article->forceDelete();*/
+
+
+
+
+        $res = Article::all();
+
+        dd($res);
     }
 }

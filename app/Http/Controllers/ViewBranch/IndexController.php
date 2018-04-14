@@ -271,6 +271,47 @@ class IndexController extends Controller
 
 //        Article::find(12)->update(['name' => 'updated two times']);
 
+        // найдёт и вернёт или создаст
+        /*$findedArticle = Article::firstOrCreate([
+            'name' => 'first or create name',
+            'text' => 'first or create text',
+        ]);*/
+
+//        найдёт и вернёт или создаст объект но не вставит в БД
+        /*$articleWithoutInsert = Article::firstOrNew([
+            'name' => 'first or new name',
+            'text' => 'first or new text',
+        ]);
+
+        $articleWithoutInsert->save();*/
+
+
+//        Article::find(8)->delete();
+//        Article::destroy(9);
+//        Article::destroy([1,2,3,4]);
+//        Article::where('id', '>', '100')->delete();
+
+//        soft delete
+        /*$article = Article::find(13);
+        $article->delete();*/
+
+        /*$res = Article::withTrashed()->get();
+        foreach ($res as $article) {
+            if ($article->trashed()) {
+                echo $article->id . ' Удалена<br>';
+                $article->restore();
+                echo $article->id . ' Восстановлена<br>';
+            }
+        }*/
+
+//        Article::onlyTrashed()->restore();
+
+        /*$article = Article::where('id', 13)->first();
+        $article->forceDelete();*/
+
+
+
+
         $res = Article::all();
 
         dd($res);

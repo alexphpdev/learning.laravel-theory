@@ -456,4 +456,59 @@ class IndexController extends Controller
 
         //dd($articles);
     }
+
+    public function other_methods_for_related_tables()
+    {
+//        1 to 1. Привязывем страну к другому пользователю
+        /*$country = Country::find(1);
+        $user = User::find(2);
+
+        $country->user()->associate($user);
+        $country->save();*/
+
+//        1 to many. Теперь, автор всех статей пользователь с id = 2
+        /*$articles = Article::all();
+        $user = User::find(2);
+        foreach ($articles as $article) {
+            $article->user()->associate($user);
+            $article->save();
+        }*/
+
+
+//        many to many. Привяжем роль пользователю у которго, её не было
+        /*
+        $user = User::find(2);
+        $role_id = Role::find(3)->id;
+
+//        $user->roles()->attach($role_id);
+        $user->roles()->detach($role_id); //удаляет связь
+        */
+
+
+//        Accessors
+
+        /*$articles = Article::all();
+
+        foreach ($articles as $article) {
+            echo $article->name . '<br>';
+        }*/
+
+//        Mutators
+        /*$user = User::first();
+        $user->articles()->create(
+            [
+                'name' => 'new article',
+                'text' => 'mutator'
+            ]
+        );*/
+
+//        User::first()->articles()->where('id', 15)->forceDelete();
+
+        
+
+
+
+
+        //dd($country);
+    }
 }

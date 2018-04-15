@@ -207,3 +207,8 @@ Route::group(['prefix' => 'work_with_related_records'], function () {
     Route::get('/', 'ViewBranch\IndexController@work_with_related_records');
 });
 
+Route::group(['prefix' => 'other_methods_for_related_tables'], function () {
+    Route::get('/', 'ViewBranch\IndexController@other_methods_for_related_tables');
+});
+
+

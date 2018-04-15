@@ -22,4 +22,20 @@ class Article extends Model
         return $this->belongsTo('App\User');
     }
 
+
+    public function getNameAttribute($value)
+    {
+        if ('test 1' == $value) {
+            return 'la_ ' . $value;
+        }
+
+        //return $value;
+
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = 'he-he ' . $value;
+    }
+
 }

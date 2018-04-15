@@ -346,7 +346,114 @@ class IndexController extends Controller
 
         $role = Role::first();
         dd($role->users->toArray());
+    }
+
+    public function work_with_related_records()
+    {
+//        lazy load
+        /*$articles = Article::all();
+
+        foreach ($articles as $el) {
+            echo $el->user->name . '<br>';
+        }*/
+
+//        greedy load
+        /*$articles = Article::with('user')->get();
+        foreach ($articles as $el) {
+            echo $el->user->name . '<br>';
+        }*/
+
+        /*$articles = Article::all();
+        $articles->load('user');
+        foreach ($articles as $el) {
+            echo $el->user->name . '<br>';
+        }*/
+
+//        ----------
+
+        /*$users = User::with('articles', 'roles')->get();
+
+        foreach ($users as $user) {
+            echo "user name: " . $user->name . "<br>";
+
+            if ($user->articles->isNotEmpty()) {
+                echo "He has such articles:<br>";
+
+                echo '<ul>';
+                foreach ($user->articles as $article) {
+                    echo "<li>";
+                    echo $article->name;
+                    echo "</li>";
+                }
+                echo '</ul>';
+            }
+
+            if ($user->roles->isNotEmpty()) {
+                echo "Also, user has these roles:<br>";
+
+                echo "<ul>";
+                foreach ($user->roles as $role) {
+                    echo "<li>";
+                    echo $role->name;
+                    echo "</li>";
+                }
+                echo "</ul>";
+            }
+        }*/
 
 
+//        выбираем пользователей, у которых есть связанные записи в таблице articles
+//        $users = User::has('articles')->get();
+//        $users = User::has('articles', '>=', '3')->get();
+        /*foreach ($users as $user) {
+            dump($user);
+        }*/
+
+
+//        \/ манипуляции с добавлением\изменением данных
+        /*$user = Users::first();
+
+        $article = new Article(
+            [
+                'name' => 'afskljlfd',
+                'text' => 'texttexttext'
+            ]
+        );*/
+
+//        $user->articles()->save($article);
+
+        /*$user->articles()->create(
+            [
+                'name' => 'afskljlfd via create',
+                'text' => 'texttexttext via create'
+            ]
+        );*/
+
+        /*$user = Users::first();
+        $user->articles()->saveMany([
+            new Article(['name' => 'name via SaveMany1', 'text' => ' text viz SaveMany1']),
+            new Article(['name' => 'name via SaveMany2', 'text' => ' text viz SaveMany2']),
+            new Article(['name' => 'name via SaveMany3', 'text' => ' text viz SaveMany3']),
+            new Article(['name' => 'name via SaveMany4', 'text' => ' text viz SaveMany4']),
+        ]);*/
+
+        /*$role = new Role(['name' => 'new role']);
+        $user = User::first();
+        $user->roles()->save($role);
+
+        dd(Role::all()->toArray());*/
+
+//        \/ редактирование данных
+
+        /*$user = User::first();
+        $user->articles()
+            ->where('id', 100500)
+            ->update([
+                'name' => 'updated name',
+                'text' => 'updated text'
+            ]);*/
+
+
+        //dd($articles);
     }
 }

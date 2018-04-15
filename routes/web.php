@@ -203,4 +203,7 @@ Route::group(['prefix' => 'relationships'], function () {
     Route::get('/', 'ViewBranch\IndexController@relationships');
 });
 
+Route::group(['prefix' => 'work_with_related_records'], function () {
+    Route::get('/', 'ViewBranch\IndexController@work_with_related_records');
+});
 

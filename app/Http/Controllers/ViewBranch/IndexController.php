@@ -504,7 +504,7 @@ class IndexController extends Controller
 
 //        User::first()->articles()->where('id', 15)->forceDelete();
 
-        
+
 
 
 

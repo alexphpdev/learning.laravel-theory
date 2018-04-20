@@ -70,7 +70,7 @@ Route::get('/page/{id}/{cat}', function ($id, $cat) {
 Route::get('/article/{id}', ['as' => 'article', function ($id) { echo "/article/$id";}]);
 
 
-Route::group(['prefix' => 'admin/{id}'], function () {
+Route::group(['prefix' => 'admin/'], function () {
 
     Route::get('/page/create', function () { echo '/page/create';});
 
@@ -184,6 +184,23 @@ Route::group(['prefix' => 'request'], function () {
            'as' => 'contact'
        ]
    );
+});
+
+Route::group(['prefix' => 'validation'], function () {
+    Route::get(
+        '/',
+        [
+            'uses' => 'RequestBranch\RequestController@show',
+            'as' => 'showValidation'
+        ]
+    );
+    Route::post(
+        '/',
+        [
+            'uses' => 'RequestBranch\RequestController@validation',
+            'as' => 'validation'
+        ]
+    );
 });
 
 

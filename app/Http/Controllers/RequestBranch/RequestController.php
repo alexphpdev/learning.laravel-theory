@@ -4,6 +4,8 @@ namespace App\Http\Controllers\RequestBranch;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
+use App\Http\Requests\ContactRequest;
 
 class RequestController extends Controller
 {
@@ -41,21 +43,60 @@ class RequestController extends Controller
             echo 'get';
         }*/
 
-        if ($request->isMethod('POST')) {
+//        if ($request->isMethod('POST')) {
 //            $request->flash();
 //            $request->flashOnly('name');
 //            $request->flashExcept('name');
             //return redirect()->route('contact')->withInput();
 //            $request->flush();
-        }
+//        }
 
 //        echo $request->root();
 //        print_r($request->query());
 
 //        print_r($request->header());
 //        print_r($request->server());
-        print_r($request->segments());
+//        print_r($request->segments());
+
+
 
         return view('default.contact', ['title' => 'adsfjlsjdl, my title']);
+    }
+
+    public function validation(ContactRequest /*Request*/ $request)
+    {
+        /*if ($request->isMethod('POST')) {
+            $rules = [
+                'name' => 'required|max:10',
+                'email' => 'required|email'
+            ];
+
+            $request->validate($rules);
+//            $this->validate($request, $rules);
+            //dump($request->all());
+        }
+
+        return view('default.contact', ['title' => 'Contacts(Validate)']);*/
+
+
+        if ($request->isMethod('POST')) {
+            /*$rules = [
+                'name' => 'required',
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                return redirect()->route('validation')->withErrors($validator)->withInput();
+            }*/
+        }
+
+        return view('default.contact', ['title' => 'Contacts(Validate)']);
+
+
+    }
+
+    public function show(){
+        return view('default.contact', ['title' => 'Contacts(Validate)']);
     }
 }

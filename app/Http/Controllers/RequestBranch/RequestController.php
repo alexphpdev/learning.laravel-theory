@@ -41,21 +41,39 @@ class RequestController extends Controller
             echo 'get';
         }*/
 
-        if ($request->isMethod('POST')) {
+//        if ($request->isMethod('POST')) {
 //            $request->flash();
 //            $request->flashOnly('name');
 //            $request->flashExcept('name');
             //return redirect()->route('contact')->withInput();
 //            $request->flush();
-        }
+//        }
 
 //        echo $request->root();
 //        print_r($request->query());
 
 //        print_r($request->header());
 //        print_r($request->server());
-        print_r($request->segments());
+//        print_r($request->segments());
+
+
 
         return view('default.contact', ['title' => 'adsfjlsjdl, my title']);
+    }
+
+    public function validation(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $rules = [
+                'name' => 'required|max:10',
+                'email' => 'required|email'
+            ];
+
+            $request->validate($rules);
+//            $this->validate($request, $rules);
+            //dump($request->all());
+        }
+
+        return view('default.contact', ['title' => 'Contacts(Validate)']);
     }
 }

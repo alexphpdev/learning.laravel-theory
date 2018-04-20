@@ -4,9 +4,9 @@
 
 <div class="col-md-9">
 
-		<pre>
-		{{ print_r(Session::all()) }}
-		</pre>
+		{{--<pre>--}}
+		{{--{{ print_r(Session::all()) }}--}}
+		{{--</pre>--}}
 	
 	<div class="">
 		<h2>Contact us!</h2>
@@ -16,7 +16,17 @@
 	This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
 	</p>
 
-	<form method="post" action="{{ route('contact', ['name' => 'hello']) }}">
+	@if (count($errors))
+		<div class="alert alert-danger">
+			<ul>
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
+
+	<form method="post" action="{{ route('validation') }}">
 		@csrf
 	  <div class="form-group">
 	    <label for="name">Name</label>
@@ -32,9 +42,14 @@
 	  </div>
 	  <div class="form-group">
 	    <label for="text">Text</label>
-	    <textarea class="form-control" id="text" name="text" rows="3">{{ old('text') }}</textarea>
+	    <textarea class="form-control" id="text" name="text" rows="3" placeholder="Text"></textarea>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
+
+
+
+
+
 </div>	
 @endsection

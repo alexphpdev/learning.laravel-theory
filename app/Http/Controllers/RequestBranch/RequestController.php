@@ -4,6 +4,8 @@ namespace App\Http\Controllers\RequestBranch;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
+use App\Http\Requests\ContactRequest;
 
 class RequestController extends Controller
 {
@@ -61,9 +63,9 @@ class RequestController extends Controller
         return view('default.contact', ['title' => 'adsfjlsjdl, my title']);
     }
 
-    public function validation(Request $request)
+    public function validation(ContactRequest /*Request*/ $request)
     {
-        if ($request->isMethod('POST')) {
+        /*if ($request->isMethod('POST')) {
             $rules = [
                 'name' => 'required|max:10',
                 'email' => 'required|email'
@@ -74,6 +76,27 @@ class RequestController extends Controller
             //dump($request->all());
         }
 
+        return view('default.contact', ['title' => 'Contacts(Validate)']);*/
+
+
+        if ($request->isMethod('POST')) {
+            /*$rules = [
+                'name' => 'required',
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                return redirect()->route('validation')->withErrors($validator)->withInput();
+            }*/
+        }
+
+        return view('default.contact', ['title' => 'Contacts(Validate)']);
+
+
+    }
+
+    public function show(){
         return view('default.contact', ['title' => 'Contacts(Validate)']);
     }
 }

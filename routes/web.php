@@ -187,11 +187,14 @@ Route::group(['prefix' => 'request'], function () {
 });
 
 Route::group(['prefix' => 'validation'], function () {
-    Route::match(
+    Route::get(
+        '/',
         [
-            'get',
-            'post'
-        ],
+            'uses' => 'RequestBranch\RequestController@show',
+            'as' => 'showValidation'
+        ]
+    );
+    Route::post(
         '/',
         [
             'uses' => 'RequestBranch\RequestController@validation',

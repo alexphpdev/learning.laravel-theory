@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', ['as' => 'home', function () {
+/*Route::get('/', ['as' => 'home', function () {
      return view('welcome');
-}]);
+}]);*/
 
 Route::get('/page', function () {
     return view('page');
@@ -186,7 +186,7 @@ Route::group(['prefix' => 'request'], function () {
    );
 });
 
-Route::group(['prefix' => 'validation'], function () {
+Route::group(['prefix' => 'validation', 'middleware' => 'auth'], function () {
     Route::get(
         '/',
         [
@@ -229,3 +229,7 @@ Route::group(['prefix' => 'other_methods_for_related_tables'], function () {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

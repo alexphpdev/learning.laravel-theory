@@ -26,10 +26,10 @@ class AppServiceProvider extends ServiceProvider
             return Response::make($value);
         });
 
-        DB::listen(function ($query) {
+        /*DB::listen(function ($query) {
             echo $query->sql . '<br><br>';
 //            print_r($query->bindings);
-        });
+        });*/
     }
 
     /**

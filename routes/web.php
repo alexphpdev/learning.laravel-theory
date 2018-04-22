@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', ['as' => 'home', function () {
+/*Route::get('/', ['as' => 'home', function () {
      return view('welcome');
-}]);
+}]);*/
 
 Route::get('/page', function () {
     return view('page');
@@ -186,7 +186,7 @@ Route::group(['prefix' => 'request'], function () {
    );
 });
 
-Route::group(['prefix' => 'validation'], function () {
+Route::group(['prefix' => 'validation', 'middleware' => 'auth'], function () {
     Route::get(
         '/',
         [
@@ -227,5 +227,59 @@ Route::group(['prefix' => 'work_with_related_records'], function () {
 Route::group(['prefix' => 'other_methods_for_related_tables'], function () {
     Route::get('/', 'ViewBranch\IndexController@other_methods_for_related_tables');
 });
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(
+    [
+        'prefix' => 'админ+панель',
+        'middleware'=>
+            [
+                'web',
+//                'auth'
+            ],
+    ],
+    function() {
+
+    Route::get('/',
+        [
+            'uses' => 'Admin\AdminController@show',
+            'as' => 'admin_index',
+        ]
+    );
+
+    Route::get('/add/post',
+        [
+            'uses' => 'Admin\AdminController@create',
+            'as' => 'admin_add_post',
+        ]
+    );
+
+});
+
+
+Route::group(['middleware' => ['web', 'auth.basic'], 'prefix' => 'auth'], function() {
+
+    Route::get('/login', 'Auth\MyAuthController@showLogin');
+    Route::post('/login', 'Auth\MyAuthController@authenticate');
+
+
+
+
+
+
+});
+
+
+
+
+
+
 
 

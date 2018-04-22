@@ -232,6 +232,7 @@ Route::group(['prefix' => 'other_methods_for_related_tables'], function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -241,7 +242,7 @@ Route::group(
         'middleware'=>
             [
                 'web',
-                'auth'
+//                'auth'
             ],
     ],
     function() {
@@ -263,6 +264,17 @@ Route::group(
 });
 
 
+Route::group(['middleware' => ['web', 'auth.basic'], 'prefix' => 'auth'], function() {
+
+    Route::get('/login', 'Auth\MyAuthController@showLogin');
+    Route::post('/login', 'Auth\MyAuthController@authenticate');
+
+
+
+
+
+
+});
 
 
 

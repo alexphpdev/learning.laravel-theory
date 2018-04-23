@@ -264,7 +264,7 @@ Route::group(
 });
 
 
-Route::group(['middleware' => ['web', 'auth.basic'], 'prefix' => 'auth'], function() {
+Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'auth'], function() {
 
     Route::get('/login', 'Auth\MyAuthController@showLogin');
     Route::post('/login', 'Auth\MyAuthController@authenticate');

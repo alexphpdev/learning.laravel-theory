@@ -18,7 +18,7 @@ class RequestController extends Controller
     public function contact(Request $request, $id = null)
     {
 //        print_r($request->all());
-        echo "<h1 style='margin-top: 200px'>" . $id . "</h1>";
+//        echo "<h1 style='margin-top: 200px'>" . $id . "</h1>";
 //        print_r($request->input('name'));
         /*if ($request->has('name')) {
             echo $request->input('name');
@@ -60,6 +60,25 @@ class RequestController extends Controller
 
 
 
+//        $ses = $request->session()->get('key', 'lbkajfdklfdsf');
+        session()->put('key', 'myKey');
+        $ses = session()->all();
+
+        if (session()->has('key')) {
+            echo session()->get('key') . '<br>';
+            session()->put(['key.second' => 'myKey2']);
+            session()->push('key.third', 'second_3');
+//            session()->forget('key');
+//            session()->flush();
+//            print_r(session()->pull('key'));
+            session()->flash('temp_message', 'for one request');
+//            session()->reflash();
+        }
+
+        dd(session()->all());
+
+
+
         return view('default.contact', ['title' => 'adsfjlsjdl, my title']);
     }
 
@@ -92,11 +111,10 @@ class RequestController extends Controller
         }
 
         return view('default.contact', ['title' => 'Contacts(Validate)']);
-
-
     }
 
-    public function show(){
+    public function show()
+    {
         return view('default.contact', ['title' => 'Contacts(Validate)']);
     }
 }
